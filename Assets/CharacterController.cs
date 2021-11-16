@@ -21,22 +21,23 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        characterMove.Move(Input.GetAxis("Horizontal"),Is_RightWall(),Is_LeftWall());
-
-        if(Is_Ground() && Input.GetButtonDown("Vertical"))
+        if ((Is_Ground() || Is_RightWall() || Is_LeftWall()) && Input.GetButtonDown("Vertical"))
         {
-            characterMove.Jamp();
+            characterMove.Jamp(Is_RightWall(), Is_LeftWall());
         }
-        if(Is_RightWall() || Is_LeftWall())
+        /*if ((Is_RightWall() || Is_LeftWall()) && Input.GetButtonDown("Vertical"))
         {
             characterMove.Climb(Input.GetAxis("Vertical"));
-        }
+            characterMove.Jamp(Is_RightWall(), Is_LeftWall());
+        }*/
         else
         {
             rb.gravityScale = 1f;
         }
-
-        
+    }
+    private void FixedUpdate()
+    {
+        characterMove.Move(Input.GetAxis("Horizontal"), Is_RightWall(), Is_LeftWall());
     }
     public bool Is_Ground()
     {
@@ -51,8 +52,6 @@ public class CharacterController : MonoBehaviour
         {
             is_ground = false;
         }
-        Debug.Log(is_ground);
-        Debug.Log(hit.collider);
         return is_ground;
     }
     public bool Is_RightWall()
@@ -68,7 +67,7 @@ public class CharacterController : MonoBehaviour
         {
             is_rightWall = false;
         }
-        Debug.Log(is_rightWall);
+        
         return is_rightWall;
     }
     public bool Is_LeftWall()
@@ -84,7 +83,6 @@ public class CharacterController : MonoBehaviour
         {
             is_leftWall = false;
         }
-        Debug.Log(is_leftWall);
         return is_leftWall;
     }
 }

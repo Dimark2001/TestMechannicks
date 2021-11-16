@@ -108,3 +108,13 @@ C# parse time         : 573ms
 candidates check time : 144ms
 console write time    : 1ms
 
+[api-updater (non-obsolete-error-filter)] 15.11.2021 13:32:49 : Starting C:/Program Files (x86)/SharpDevelop/2020.3.22f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 149,0024ms
+moved types parse time: 97ms
+candidates parse time : 1ms
+C# parse time         : 379ms
+candidates check time : 69ms
+console write time    : 1ms
+
